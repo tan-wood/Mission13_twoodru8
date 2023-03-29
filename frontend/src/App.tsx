@@ -1,57 +1,62 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
 import './App.css';
+import { Link } from 'react-router-dom';
+import MovieList from './Movies';
 
-// class Welcome extends React.Component {
-//   render() {
-//     return <h1>This website gives some rando numbers</h1>;
-//   }
-// }
-
-// class Conclusion extends React.Component {
-//   render() {
-//     return <p>Hope you enjoyed!</p>;
-//   }
-// }
-
-// function Rando() {
-//   return (
-//     <div>
-//       <h2>Random Number: {Math.random()}</h2>
-//     </div>
-//   );
-// }
-
-//these are siblings right now
-function GoButton(props: any) {
+function Nav() {
   return (
-    <div>
-      <button onClick={props.blahClick}>Go!</button>
-      <br />
-      <label>{props.count}</label>
-    </div>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/MyPodcasts">My Podcasts</Link>
+        </li>
+        <li>
+          <Link to="/MovieCollection">Movie Collection</Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
 
-function AmountOfGo(props: any) {
-  return <label>{props.num}</label>;
-}
-
-function App() {
-  //this is the parent and so we can flow this info down to the children.
-  //set count to 0 and now we can keep track of the count and set the count
-  //This is a react hook
-  const [count, setCount] = useState(0);
-  //This is a pointer to a method. not a method itself!!
-  //const incrementGo = () => setCount(count + 1);
-
+function Home() {
   return (
-    <div>
-      <GoButton blahClick={() => setCount(count + 1)} />
-      <br />
-      <AmountOfGo num={count} />
-    </div>
+    <>
+      <Nav />
+      <h1>Welcome to the Joel Hilton Site</h1>
+      <img src="./JoelHiltonHeadshot.jpg" alt="" />
+      <h3>This site is used to be an awesome movie website</h3>
+    </>
   );
 }
 
-export default App;
+export function Podcasts() {
+  return (
+    <>
+      <Nav />
+      <h1>My Podcasts</h1>
+      <a href="https://baconsale.com/" target="_blank" rel="noreferrer">
+        The Best podcast ever!
+      </a>
+    </>
+  );
+}
+
+export function MovieCollection() {
+  return (
+    <>
+      <Nav />
+      <MovieList />
+    </>
+  );
+}
+
+export function App() {
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+}
