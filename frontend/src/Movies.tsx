@@ -1,14 +1,20 @@
+/* eslint-disable prettier/prettier */
 import { useState } from 'react';
 import data from './MovieData.json';
 
 const MovieData = data.MovieData;
 
+const MovieObjects = MovieData.map((m, i) => ({
+  id: i,
+  title: m,
+}));
+
 function MovieList() {
-  const [listOMovies, setListOMovies] = useState(MovieData);
+  const [listOMovies, setListOMovies] = useState(MovieObjects);
 
   return (
     <>
-      <div>
+      <div className="text-center">
         <h3>Joel Hilton's Movie Collection</h3>
       </div>
       <div>
@@ -26,13 +32,13 @@ function MovieList() {
           <tbody>
             {/* doing a foreach loop */}
             {listOMovies.map((m) => (
-              <tr>
-                <td>{m.Title}</td>
-                <td>{m.Year}</td>
-                <td>{m.Director}</td>
-                <td>{m.Rating}</td>
-                <td>{m.Category}</td>
-                <td>{m.Edited}</td>
+              <tr key={m.id}>
+                <td>{m.title.Title}</td>
+                <td>{m.title.Year}</td>
+                <td>{m.title.Director}</td>
+                <td>{m.title.Rating}</td>
+                <td>{m.title.Category}</td>
+                <td>{m.title.Edited}</td>
               </tr>
             ))}
           </tbody>
