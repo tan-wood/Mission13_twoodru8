@@ -1,7 +1,7 @@
-/* eslint-disable prettier/prettier */
+
 import './App.css';
 import { Link } from 'react-router-dom';
-import MovieList from './Movies';
+import MovieList from '../movie/Movies';
 
 function Nav() {
   return (
